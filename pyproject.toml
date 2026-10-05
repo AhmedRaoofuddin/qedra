@@ -1,0 +1,99 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "qedra"
+version = "0.1.0"
+description = "A neuro-symbolic CLI that proves Azure Well-Architected properties with an SMT solver instead of guessing them with an LLM."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Ahmed Raoofuddin" }]
+keywords = [
+    "azure",
+    "well-architected",
+    "formal-verification",
+    "smt",
+    "z3",
+    "infrastructure-as-code",
+    "neuro-symbolic",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: System :: Systems Administration",
+]
+dependencies = [
+    "z3-solver>=4.12",
+    "numpy>=1.26",
+    "pydantic>=2.6",
+    "typer>=0.12",
+    "rich>=13.7",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "hypothesis>=6.100",
+    "ruff>=0.5",
+    "mypy>=1.10",
+    "types-PyYAML>=6.0",
+]
+
+[project.scripts]
+qedra = "qedra.cli.app:app"
+
+[project.urls]
+Homepage = "https://github.com/araoofuddin/qedra"
+Repository = "https://github.com/araoofuddin/qedra"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qedra"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM", "C4", "RUF"]
+ignore = ["N818"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]
+# Typer expresses CLI options as function-default calls; B008 is the wrong signal here.
+"src/qedra/cli/*" = ["B008"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["qedra"]
+mypy_path = "src"
+plugins = ["pydantic.mypy"]
+warn_unused_ignores = true
+disallow_any_generics = true
+
+[[tool.mypy.overrides]]
+module = ["z3.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+pythonpath = ["src"]
+
+[tool.coverage.run]
+source = ["src/qedra"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

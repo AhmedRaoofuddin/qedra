@@ -1,0 +1,7 @@
+{
+  "policy": "baseline",
+  "findings": {
+    "SEC-001": "PROVEN",
+    "REL-001": "PROVEN"
+  }
+}

@@ -1,0 +1,10 @@
+# The built-in WAF baseline, written out for reference and customisation.
+# Generate your own starting point with:  qedra init -o my-policy.qedra.yaml
+name: waf-baseline
+
+security:
+  no_internet_inbound:
+    tiers: [data]          # subnets tagged tier=data must deny all internet inbound
+
+reliability:
+  availability: ">= 99.99%"  # composite availability target, proved on the dependency model

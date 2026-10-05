@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="'Segoe UI', system-ui, -apple-system, Arial, sans-serif">
+  <defs>
+    <marker id="h" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#8A93A3"/>
+    </marker>
+  </defs>
+  <rect width="1280" height="720" fill="#FBFCFE"/>
+
+  <text x="64" y="74" font-size="12.5" font-weight="700" letter-spacing="0.22em" fill="#6D28D9">QEDRA · SYSTEM ARCHITECTURE</text>
+  <text x="64" y="112" font-size="34" font-weight="700" fill="#0B1F3A">A compiler for cloud architecture</text>
+  <text x="64" y="140" font-size="16" fill="#64708A">Pure domain and solvers at the centre, swappable adapters at the edges. The solver decides every verdict.</text>
+  <line x1="64" y1="162" x2="1216" y2="162" stroke="#E6EAF1"/>
+
+  <!-- column headers -->
+  <text x="64"   y="212" font-size="12" font-weight="700" letter-spacing="0.12em" fill="#8A93A3">INPUTS</text>
+  <text x="300"  y="212" font-size="12" font-weight="700" letter-spacing="0.12em" fill="#8A93A3">ADAPTERS</text>
+  <text x="548"  y="212" font-size="12" font-weight="700" letter-spacing="0.12em" fill="#8A93A3">DOMAIN · IR</text>
+  <text x="760"  y="212" font-size="12" font-weight="700" letter-spacing="0.12em" fill="#6D28D9">ENGINES</text>
+  <text x="1060" y="212" font-size="12" font-weight="700" letter-spacing="0.12em" fill="#8A93A3">OUTPUTS</text>
+
+  <!-- INPUTS -->
+  <g font-size="13.5" fill="#0B1F3A">
+    <rect x="64" y="228" width="184" height="52" rx="9" fill="#F6F8FC" stroke="#E0E6F0"/>
+    <text x="84" y="259" font-weight="600">Bicep → ARM</text>
+    <rect x="64" y="292" width="184" height="52" rx="9" fill="#F6F8FC" stroke="#E0E6F0"/>
+    <text x="84" y="323" font-weight="600">ARM templates</text>
+    <rect x="64" y="356" width="184" height="52" rx="9" fill="#F6F8FC" stroke="#E0E6F0"/>
+    <text x="84" y="387" font-weight="600">Resource Graph</text>
+    <rect x="64" y="420" width="184" height="52" rx="9" fill="#F6F8FC" stroke="#E0E6F0"/>
+    <text x="84" y="451" font-weight="600">Policy contract</text>
+  </g>
+
+  <!-- ADAPTERS -->
+  <rect x="300" y="228" width="196" height="244" rx="11" fill="#ffffff" stroke="#E0E6F0"/>
+  <text x="320" y="258" font-size="14" font-weight="700" fill="#0B1F3A">ingest · report</text>
+  <g font-size="12.5" fill="#64708A">
+    <rect x="320" y="274" width="156" height="40" rx="7" fill="#F6F8FC" stroke="#E6EAF1"/>
+    <text x="336" y="299">arm · native</text>
+    <rect x="320" y="322" width="156" height="40" rx="7" fill="#F6F8FC" stroke="#E6EAF1"/>
+    <text x="336" y="347">resource_graph</text>
+    <rect x="320" y="370" width="156" height="40" rx="7" fill="#F6F8FC" stroke="#E6EAF1"/>
+    <text x="336" y="395">json · markdown</text>
+  </g>
+  <text x="320" y="452" font-size="11.5" fill="#94A0B4">normalise → IR</text>
+
+  <!-- DOMAIN IR (dark core) -->
+  <rect x="548" y="228" width="180" height="244" rx="11" fill="#0B1F3A"/>
+  <text x="568" y="258" font-size="14" font-weight="700" fill="#ffffff">canonical IR</text>
+  <g font-size="12.5" fill="#D7E0EE">
+    <rect x="568" y="274" width="140" height="40" rx="7" fill="#15294A"/>
+    <text x="584" y="299">NetworkModel</text>
+    <rect x="568" y="322" width="140" height="40" rx="7" fill="#15294A"/>
+    <text x="584" y="347">NSG · CIDR</text>
+    <rect x="568" y="370" width="140" height="40" rx="7" fill="#15294A"/>
+    <text x="584" y="395">DependencyModel</text>
+  </g>
+  <text x="568" y="452" font-size="11.5" fill="#7E8FAC">frozen · deterministic</text>
+
+  <!-- ENGINES (accent) -->
+  <rect x="760" y="228" width="268" height="244" rx="11" fill="#ffffff" stroke="#C7B6F0" stroke-width="1.4"/>
+  <text x="780" y="258" font-size="14" font-weight="700" fill="#0B1F3A">formal engines</text>
+  <g>
+    <rect x="780" y="274" width="228" height="56" rx="8" fill="#F5F1FD" stroke="#D8C9F4"/>
+    <text x="798" y="299" font-size="13.5" font-weight="700" fill="#0B1F3A">SMT · Z3</text>
+    <text x="798" y="319" font-size="12" fill="#64708A">reachability → UNSAT / SAT</text>
+    <rect x="780" y="338" width="228" height="56" rx="8" fill="#F5F1FD" stroke="#D8C9F4"/>
+    <text x="798" y="363" font-size="13.5" font-weight="700" fill="#0B1F3A">CTMC</text>
+    <text x="798" y="383" font-size="12" fill="#64708A">availability · downtime</text>
+    <rect x="780" y="402" width="228" height="56" rx="8" fill="#F8F6FD" stroke="#E4DAF7" stroke-dasharray="3 3"/>
+    <text x="798" y="427" font-size="13.5" font-weight="700" fill="#7A6AA6">Cost · ILP</text>
+    <text x="798" y="447" font-size="12" fill="#94A0B4">Retail Prices (roadmap)</text>
+  </g>
+
+  <!-- OUTPUTS -->
+  <g font-size="13.5" fill="#0B1F3A">
+    <rect x="1060" y="228" width="156" height="52" rx="9" fill="#F6F8FC" stroke="#E0E6F0"/>
+    <text x="1080" y="259" font-weight="600">Console</text>
+    <rect x="1060" y="292" width="156" height="52" rx="9" fill="#F6F8FC" stroke="#E0E6F0"/>
+    <text x="1080" y="323" font-weight="600">JSON proof DB</text>
+    <rect x="1060" y="356" width="156" height="52" rx="9" fill="#F6F8FC" stroke="#E0E6F0"/>
+    <text x="1080" y="387" font-weight="600">Markdown</text>
+    <rect x="1060" y="420" width="156" height="52" rx="9" fill="#F6F8FC" stroke="#E0E6F0"/>
+    <text x="1080" y="451" font-weight="600">Exit code 0 / 1</text>
+  </g>
+
+  <!-- flow arrows -->
+  <g stroke="#8A93A3" stroke-width="1.4">
+    <line x1="248" y1="350" x2="298" y2="350" marker-end="url(#h)"/>
+    <line x1="496" y1="350" x2="546" y2="350" marker-end="url(#h)"/>
+    <line x1="728" y1="350" x2="758" y2="350" marker-end="url(#h)"/>
+    <line x1="1028" y1="350" x2="1058" y2="350" marker-end="url(#h)"/>
+  </g>
+
+  <!-- verdict chips -->
+  <line x1="64" y1="524" x2="1216" y2="524" stroke="#E6EAF1"/>
+  <text x="64" y="560" font-size="12" font-weight="700" letter-spacing="0.12em" fill="#8A93A3">VERDICTS</text>
+  <g font-size="13.5">
+    <circle cx="74" cy="596" r="6" fill="#15855B"/>
+    <text x="90" y="601" font-weight="700" fill="#0B1F3A">PROVEN</text>
+    <text x="176" y="601" fill="#64708A">UNSAT of the negation</text>
+
+    <circle cx="420" cy="596" r="6" fill="#DC2626"/>
+    <text x="436" y="601" font-weight="700" fill="#0B1F3A">VIOLATED</text>
+    <text x="528" y="601" fill="#64708A">re-validated counterexample</text>
+
+    <circle cx="880" cy="596" r="6" fill="#C98A1A"/>
+    <text x="896" y="601" font-weight="700" fill="#0B1F3A">UNSUPPORTED</text>
+    <text x="1016" y="601" fill="#64708A">reported, never hidden</text>
+  </g>
+  <text x="64" y="652" font-size="13" fill="#64708A">Two implementations of NSG semantics (reference + Z3) are checked against each other, so an UNSAT result is a proof rather than a guess.</text>
+</svg>

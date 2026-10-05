@@ -1,0 +1,80 @@
+# A three-tier workload that satisfies the WAF baseline.
+# The data tier denies all internet inbound; redundancy lifts availability past four nines.
+name: contoso-secure
+
+network:
+  vnets:
+    - name: vnet-prod
+      address_prefixes: ["10.0.0.0/16"]
+      subnets:
+        - name: snet-web
+          address_prefix: "10.0.1.0/24"
+          tags: { tier: web }
+          nsg:
+            name: nsg-web
+            rules:
+              - name: AllowHttpsFromInternet
+                priority: 200
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                source: Internet
+                source_ports: "*"
+                destination: "*"
+                destination_ports: "443"
+
+        - name: snet-app
+          address_prefix: "10.0.2.0/24"
+          tags: { tier: app }
+          nsg:
+            name: nsg-app
+            rules:
+              - name: AllowWebTier
+                priority: 200
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                source: "10.0.1.0/24"
+                source_ports: "*"
+                destination: "*"
+                destination_ports: "443"
+
+        - name: snet-data
+          address_prefix: "10.0.3.0/24"
+          tags: { tier: data }
+          nsg:
+            name: nsg-data
+            rules:
+              - name: AllowSqlFromAppTier
+                priority: 200
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                source: "10.0.2.0/24"
+                source_ports: "*"
+                destination: "*"
+                destination_ports: "1433"
+              - name: DenyEverythingElseInbound
+                priority: 4000
+                direction: Inbound
+                access: Deny
+                protocol: "*"
+                source: "*"
+                source_ports: "*"
+                destination: "*"
+                destination_ports: "*"
+
+reliability:
+  components:
+    - name: application-gateway
+      instances: 2
+      required: 1
+      instance_availability: 0.9995
+    - name: app-service
+      instances: 3
+      required: 1
+      instance_availability: 0.99
+    - name: azure-sql
+      instances: 2
+      required: 1
+      instance_availability: 0.9995

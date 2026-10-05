@@ -1,0 +1,7 @@
+{
+  "policy": "baseline",
+  "findings": {
+    "SEC-001": "VIOLATED",
+    "REL-001": "VIOLATED"
+  }
+}

@@ -1,0 +1,56 @@
+# The same workload with two planted defects:
+#   1. the data tier NSG exposes SQL (1433) to the public internet
+#   2. every tier runs a single instance, so availability falls short of four nines
+name: contoso-flawed
+
+network:
+  vnets:
+    - name: vnet-prod
+      address_prefixes: ["10.0.0.0/16"]
+      subnets:
+        - name: snet-web
+          address_prefix: "10.0.1.0/24"
+          tags: { tier: web }
+          nsg:
+            name: nsg-web
+            rules:
+              - name: AllowHttpsFromInternet
+                priority: 200
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                source: Internet
+                source_ports: "*"
+                destination: "*"
+                destination_ports: "443"
+
+        - name: snet-data
+          address_prefix: "10.0.3.0/24"
+          tags: { tier: data }
+          nsg:
+            name: nsg-data
+            rules:
+              - name: AllowSqlFromInternet   # the planted mistake
+                priority: 100
+                direction: Inbound
+                access: Allow
+                protocol: Tcp
+                source: Internet
+                source_ports: "*"
+                destination: "*"
+                destination_ports: "1433"
+
+reliability:
+  components:
+    - name: application-gateway
+      instances: 1
+      required: 1
+      instance_availability: 0.999
+    - name: app-service
+      instances: 1
+      required: 1
+      instance_availability: 0.99
+    - name: azure-sql
+      instances: 1
+      required: 1
+      instance_availability: 0.999
