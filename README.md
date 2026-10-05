@@ -20,7 +20,7 @@ so a result is a proof, not an opinion.
 </div>
 
 <p align="center">
-  <img src="docs/diagrams/03-reference-architecture.svg" alt="Reference three-tier architecture with qedra verdicts" width="100%">
+  <img src="docs/diagrams/03-reference-architecture.png" alt="Reference three-tier architecture with qedra verdicts" width="100%">
 </p>
 
 ```text
@@ -111,7 +111,7 @@ qedra explain examples/contoso-flawed SEC-001
 ## How it works
 
 <p align="center">
-  <img src="docs/diagrams/01-architecture.svg" alt="qedra system architecture" width="100%">
+  <img src="docs/diagrams/01-architecture.png" alt="qedra system architecture" width="100%">
 </p>
 
 1. An adapter compiles Bicep, ARM, or live Resource Graph state into a canonical model.
@@ -126,7 +126,7 @@ type-checked specification and phrases proofs the solver already produced. Truth
 solver, which keeps results auditable and free of hallucination.
 
 <p align="center">
-  <img src="docs/diagrams/02-neuro-symbolic.svg" alt="The neuro-symbolic boundary" width="100%">
+  <img src="docs/diagrams/02-neuro-symbolic.png" alt="The neuro-symbolic boundary" width="100%">
 </p>
 
 Read the design in [docs/architecture.md](docs/architecture.md), and the engines in
@@ -171,7 +171,7 @@ Generate a starter with `qedra init`.
 ## Using qedra in CI
 
 <p align="center">
-  <img src="docs/diagrams/04-cicd-gate.svg" alt="qedra as a merge gate" width="100%">
+  <img src="docs/diagrams/04-cicd-gate.png" alt="qedra as a merge gate" width="100%">
 </p>
 
 `qedra verify` exits non-zero on the first violation, so it gates a pull request the way a test

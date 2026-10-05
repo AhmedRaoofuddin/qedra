@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1440px;height:1040px}
+  body{font-family:"Inter",system-ui,Arial,sans-serif;background:linear-gradient(160deg,#4a5a80,#323f5b);position:relative;overflow:hidden;color:#eef2fb;-webkit-font-smoothing:antialiased}
+  h1{position:absolute;left:92px;top:88px;font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:50px;color:#f4f7fd;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+  .tag{position:absolute;left:94px;top:160px;font-size:15px;font-weight:500;letter-spacing:.05em;color:#9fb0d6}
+
+  .plate-wrap{position:absolute;width:430px;height:150px;margin-left:-215px;margin-top:-75px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-38deg)}
+  .plate{position:absolute;inset:0;border-radius:28px;background:var(--face);
+    box-shadow:0 3px 0 var(--e),0 6px 0 var(--e),0 9px 0 var(--e),0 12px 0 var(--e),0 15px 0 var(--e),0 18px 0 var(--e),0 21px 0 var(--e),0 24px 0 var(--e),0 27px 0 var(--e),0 30px 0 var(--e),0 58px 54px rgba(12,16,32,.5)}
+  .plate::after{content:"";position:absolute;inset:0;border-radius:28px;background:radial-gradient(ellipse 70% 60% at 30% 22%,rgba(255,255,255,.42),rgba(255,255,255,0) 58%)}
+
+  .firewall{position:absolute;left:688px;top:360px;width:64px;height:400px;border-radius:20px;
+    background:linear-gradient(180deg,#141b30,#0e1424);border:1px solid #37407a;
+    box-shadow:0 0 50px rgba(124,77,255,.5),inset 0 0 24px rgba(124,77,255,.35)}
+  .firewall span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;font-size:14px;font-weight:700;letter-spacing:.22em;color:#c3b4ff}
+
+  .icon{position:absolute;width:62px;height:62px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 4px 9px rgba(12,16,32,.35)}
+  .icon svg{width:30px;height:30px}
+
+  .lab{position:absolute;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+
+  .callout{position:absolute;width:420px;text-align:center}
+  .callout .h{font-size:24px;font-weight:700}
+  .callout .u{height:3px;border-radius:2px;margin:9px auto 12px}
+  .callout p{font-size:16px;line-height:1.6;color:#cdd7ec}
+
+  .arrow{position:absolute;height:2px;background:linear-gradient(90deg,rgba(142,160,198,.2),rgba(142,160,198,.9));}
+  .arrow::after{content:"";position:absolute;right:-1px;top:-4px;border-left:9px solid #9fb0d0;border-top:5px solid transparent;border-bottom:5px solid transparent}
+  .arrow.rev{background:linear-gradient(90deg,rgba(142,160,198,.9),rgba(142,160,198,.2))}
+  .arrow.rev::after{right:auto;left:-1px;border-left:none;border-right:9px solid #9fb0d0;border-top:5px solid transparent;border-bottom:5px solid transparent}
+  .alabel{position:absolute;font-size:13px;color:#aab6d6;font-weight:500}
+</style></head>
+<body>
+  <h1>The LLM proposes, the solver disposes</h1>
+  <div class="tag">The language model never decides a finding, so every result stays auditable and free of hallucination.</div>
+
+  <div class="lab" style="left:310px;top:300px;color:#b59cff">NEURAL · LANGUAGE</div>
+  <div class="lab" style="left:980px;top:300px;color:#6fb4ff">SYMBOLIC · TRUTH</div>
+
+  <!-- neural plate -->
+  <div class="plate-wrap" style="left:360px;top:500px;--face:linear-gradient(135deg,#a981ff,#6b3bea);--e:#472a9c"><div class="plate"></div></div>
+  <!-- symbolic plate -->
+  <div class="plate-wrap" style="left:1080px;top:500px;--face:linear-gradient(135deg,#5aa0ff,#2a68d8);--e:#1f4aa0"><div class="plate"></div></div>
+
+  <!-- firewall -->
+  <div class="firewall"><span>FACTUAL FIREWALL</span></div>
+
+  <!-- icons -->
+  <div class="icon" style="left:329px;top:469px;background:rgba(169,129,255,.3);border-color:rgba(200,180,255,.6)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3v3M12 18v3M4.2 7.5l2.6 1.5M17.2 15l2.6 1.5M4.2 16.5l2.6-1.5M17.2 9l2.6-1.5"/><circle cx="12" cy="12" r="4"/></svg>
+  </div>
+  <div class="icon" style="left:1049px;top:469px;background:rgba(90,160,255,.3);border-color:rgba(170,205,255,.6)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3 l7 3 v6 c0 5-4 7-7 8 c-3-1-7-3-7-8 V6 Z"/><path d="M8.5 12 l2.5 2.5 l4.5-5.5"/></svg>
+  </div>
+
+  <!-- flow arrows across firewall -->
+  <div class="arrow" style="left:565px;top:470px;width:300px"></div>
+  <div class="alabel" style="left:600px;top:444px">typed spec</div>
+  <div class="arrow rev" style="left:565px;top:560px;width:300px"></div>
+  <div class="alabel" style="left:588px;top:568px">verdict &amp; explanation</div>
+
+  <!-- callouts -->
+  <div class="callout" style="left:150px;top:720px">
+    <div class="h" style="color:#b59cff">Neural</div><div class="u" style="background:#7c4dff;width:120px"></div>
+    <p>An intent compiler turns plain-English policy into a type-checked spec; an explainer phrases the proof. It never decides truth.</p>
+  </div>
+  <div class="callout" style="left:870px;top:720px">
+    <div class="h" style="color:#6fb4ff">Symbolic</div><div class="u" style="background:#2a68d8;width:130px"></div>
+    <p>Z3 and a Markov chain decide every property and return a certificate: a minimal UNSAT proof, or a re-validated counterexample.</p>
+  </div>
+</body></html>

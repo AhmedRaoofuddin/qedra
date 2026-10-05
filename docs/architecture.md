@@ -4,7 +4,7 @@ qedra is built as a hexagon: a pure domain and formal engines at the centre, swa
 the edges. The centre has no dependency on Azure SDKs, the filesystem, or a language model, so it
 is deterministic and testable in isolation.
 
-![System architecture](diagrams/01-architecture.svg)
+![System architecture](diagrams/01-architecture.png)
 
 ## Layers
 
@@ -35,7 +35,7 @@ Every property resolves to one of three verdicts, each bound to a certificate:
 
 ## The neuro-symbolic boundary
 
-![Neuro-symbolic boundary](diagrams/02-neuro-symbolic.svg)
+![Neuro-symbolic boundary](diagrams/02-neuro-symbolic.png)
 
 The language model never decides a finding. It compiles intent into a type-checked spec and phrases
 proofs the solver already produced. Truth comes from the symbolic side, so results are auditable
@@ -43,7 +43,7 @@ and free of hallucination. (The neural layer is on the roadmap; the v1 engines a
 
 ## In a pipeline
 
-![CI gate](diagrams/04-cicd-gate.svg)
+![CI gate](diagrams/04-cicd-gate.png)
 
 `qedra verify` gates a pull request the way a test suite does: a property that cannot be proven
 fails the build before the change reaches production.

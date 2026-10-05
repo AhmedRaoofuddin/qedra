@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1440px;height:1040px}
+  body{font-family:"Inter",system-ui,Arial,sans-serif;background:linear-gradient(160deg,#4a5a80,#323f5b);position:relative;overflow:hidden;color:#eef2fb;-webkit-font-smoothing:antialiased}
+  h1{position:absolute;left:92px;top:88px;font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:50px;color:#f4f7fd;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+  .tag{position:absolute;left:94px;top:160px;font-size:15px;font-weight:500;letter-spacing:.05em;color:#9fb0d6}
+
+  .plate-wrap{position:absolute;width:300px;height:118px;margin-left:-150px;margin-top:-59px;transform-style:preserve-3d;transform:rotateX(60deg) rotateZ(-38deg)}
+  .plate{position:absolute;inset:0;border-radius:24px;background:var(--face);
+    box-shadow:0 3px 0 var(--e),0 6px 0 var(--e),0 9px 0 var(--e),0 12px 0 var(--e),0 15px 0 var(--e),0 18px 0 var(--e),0 21px 0 var(--e),0 46px 44px rgba(12,16,32,.5)}
+  .plate::after{content:"";position:absolute;inset:0;border-radius:24px;background:radial-gradient(ellipse 70% 60% at 30% 22%,rgba(255,255,255,.4),rgba(255,255,255,0) 58%)}
+
+  .icon{position:absolute;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 3px 7px rgba(12,16,32,.3)}
+  .icon svg{width:26px;height:26px}
+
+  .step{position:absolute;text-align:center;width:260px}
+  .step .h{font-size:20px;font-weight:700;color:#eaf0fb}
+  .step p{font-size:14px;color:#c0cbe4;margin-top:4px}
+  .step .mono{font-family:"JetBrains Mono",monospace;font-size:13px;color:#aeb9d6;margin-top:4px}
+
+  .lines{position:absolute;inset:0;pointer-events:none}
+
+  .pill{position:absolute;display:flex;align-items:center;gap:11px;padding:14px 22px;border-radius:14px;font-size:16px;font-weight:600;box-shadow:0 10px 22px rgba(10,14,28,.4)}
+  .dot{width:11px;height:11px;border-radius:50%}
+  .pill .mono{font-family:"JetBrains Mono",monospace;font-size:14px}
+</style></head>
+<body>
+  <h1>A merge gate that proves, not guesses</h1>
+  <div class="tag">A property that cannot be proven fails the build before the change reaches production.</div>
+
+  <!-- flow plates (descending iso) -->
+  <div class="plate-wrap" style="left:330px;top:440px;--face:linear-gradient(135deg,#6aa0ff,#2e62de);--e:#214a9e"><div class="plate"></div></div>
+  <div class="plate-wrap" style="left:690px;top:560px;--face:linear-gradient(135deg,#53e7d6,#15a3bc);--e:#0d7286"><div class="plate"></div></div>
+  <div class="plate-wrap" style="left:1050px;top:680px;--face:linear-gradient(135deg,#a981ff,#6b3bea);--e:#472a9c"><div class="plate"></div></div>
+
+  <!-- connecting arrows -->
+  <svg class="lines" viewBox="0 0 1440 1040">
+    <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0 0 L8 3.2 L0 6.4 Z" fill="#9fb0d0"/></marker></defs>
+    <path d="M470,470 C560,500 580,510 620,528" stroke="#9fb0d0" stroke-width="2" fill="none" marker-end="url(#ah)" opacity="0.8"/>
+    <path d="M830,590 C920,620 940,630 980,648" stroke="#9fb0d0" stroke-width="2" fill="none" marker-end="url(#ah)" opacity="0.8"/>
+    <path d="M1130,720 C1180,760 1120,820 1030,842" stroke="#22c486" stroke-width="2" fill="none" marker-end="url(#ah)" opacity="0.85"/>
+    <path d="M1130,730 C1200,800 1180,880 1030,908" stroke="#ff5c6e" stroke-width="2" fill="none" marker-end="url(#ah)" opacity="0.85"/>
+  </svg>
+
+  <!-- icons -->
+  <div class="icon" style="left:304px;top:414px"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="8" r="2.5"/><path d="M6 8.5v7M18 10.5c0 4-5 3-5 7"/></svg></div>
+  <div class="icon" style="left:664px;top:534px"><svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M9 7v10l8-5z"/></svg></div>
+  <div class="icon" style="left:1024px;top:654px"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3" fill="#fff" stroke="none"/><path d="M9.5 7V4M14.5 7V4M9.5 17v3M14.5 17v3M7 9.5H4M7 14.5H4M17 9.5h3M17 14.5h3" stroke-linecap="round"/></svg></div>
+
+  <!-- step labels -->
+  <div class="step" style="left:200px;top:300px"><div class="h">Pull request</div><p>engineer edits Bicep / ARM</p></div>
+  <div class="step" style="left:560px;top:420px"><div class="h">GitHub Actions</div><div class="mono">qedra verify ./infra</div></div>
+  <div class="step" style="left:920px;top:540px"><div class="h">Formal engines</div><p>Z3 SMT · CTMC — verdict per property</p></div>
+
+  <!-- outcome pills -->
+  <div class="pill" style="left:760px;top:820px;background:rgba(34,196,134,.16);border:1px solid rgba(34,196,134,.5);color:#5fe3ab"><div class="dot" style="background:#22c486"></div><span class="mono">exit 0</span> · all proven, merge allowed</div>
+  <div class="pill" style="left:760px;top:892px;background:rgba(255,92,110,.14);border:1px solid rgba(255,92,110,.5);color:#ff9aa6"><div class="dot" style="background:#ff5c6e"></div><span class="mono">exit 1</span> · counterexample posted, merge blocked</div>
+</body></html>

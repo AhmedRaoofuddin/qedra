@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1440px;height:1040px}
+  body{font-family:"Inter",system-ui,Arial,sans-serif;background:linear-gradient(160deg,#4a5a80,#323f5b);position:relative;overflow:hidden;color:#eef2fb;-webkit-font-smoothing:antialiased}
+  h1{position:absolute;left:92px;top:88px;font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:52px;color:#f4f7fd;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+  .tag{position:absolute;left:94px;top:166px;font-size:15px;font-weight:500;letter-spacing:.05em;color:#9fb0d6}
+
+  .plate-wrap{position:absolute;left:600px;width:380px;height:132px;margin-left:-190px;margin-top:-66px;transform-style:preserve-3d;transform:rotateX(60deg) rotateZ(-38deg)}
+  .plate{position:absolute;inset:0;border-radius:26px;background:var(--face);
+    box-shadow:0 3px 0 var(--e),0 6px 0 var(--e),0 9px 0 var(--e),0 12px 0 var(--e),0 15px 0 var(--e),0 18px 0 var(--e),0 21px 0 var(--e),0 24px 0 var(--e),0 54px 50px rgba(12,16,32,.5)}
+  .plate::after{content:"";position:absolute;inset:0;border-radius:26px;background:radial-gradient(ellipse 70% 60% at 30% 22%,rgba(255,255,255,.4),rgba(255,255,255,0) 58%)}
+
+  .node{position:absolute;width:118px;height:118px;border-radius:26px;display:flex;align-items:center;justify-content:center;flex-direction:column;
+    background:linear-gradient(180deg,#2c3a5e,#1d2740);border:1px solid #3d4a73;
+    box-shadow:0 14px 26px rgba(10,14,28,.5)}
+  .node span{font-size:13px;font-weight:600;color:#c7d3ee;margin-top:8px}
+
+  .icon{position:absolute;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 3px 7px rgba(12,16,32,.3)}
+  .icon svg{width:26px;height:26px}
+  .lines{position:absolute;inset:0;pointer-events:none}
+
+  .callout{position:absolute;width:300px}
+  .callout .h{font-size:22px;font-weight:700}
+  .callout .u{height:3px;border-radius:2px;margin:7px 0 10px}
+  .callout p{font-size:15px;line-height:1.55;color:#cdd7ec}
+  .callout .mono{font-family:"JetBrains Mono",monospace;font-size:13px;color:#aeb9d6}
+
+  .pill{position:absolute;display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:14px;font-size:15px;font-weight:600;box-shadow:0 10px 22px rgba(10,14,28,.4)}
+  .dot{width:10px;height:10px;border-radius:50%}
+</style></head>
+<body>
+  <h1>Reference architecture — what qedra proves</h1>
+  <div class="tag">One VNet, three isolated subnets, and the single property that keeps the data tier private.</div>
+
+  <!-- base disc -->
+  <div style="position:absolute;left:600px;top:792px;transform:rotateX(60deg);">
+    <div style="position:absolute;width:520px;height:520px;left:-260px;top:-260px;border-radius:50%;background:radial-gradient(circle at 42% 38%,#d8dff5,#abb7e1 70%,#93a1d3);box-shadow:0 5px 0 #9aa8d6,0 10px 0 #93a1cf,0 15px 0 #8c9ac8,0 20px 0 #8695c3,0 44px 60px rgba(12,16,32,.5)"></div>
+  </div>
+
+  <!-- internet node -->
+  <div class="node" style="left:150px;top:300px">
+    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#9fb4e6" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M4.5 7.5h15M4.5 16.5h15"/></svg>
+    <span>Internet</span>
+  </div>
+
+  <!-- tiers -->
+  <div class="plate-wrap" style="top:430px;--face:linear-gradient(135deg,#6aa0ff,#2e62de);--e:#214a9e"><div class="plate"></div></div>
+  <div class="plate-wrap" style="top:575px;--face:linear-gradient(135deg,#53e7d6,#15a3bc);--e:#0d7286"><div class="plate"></div></div>
+  <div class="plate-wrap" style="top:720px;--face:linear-gradient(135deg,#a981ff,#6b3bea);--e:#472a9c"><div class="plate"></div></div>
+
+  <!-- leader lines -->
+  <svg class="lines" viewBox="0 0 1440 1040">
+    <path d="M268,340 C360,370 430,400 470,418" stroke="#8ea0c6" stroke-width="1.6" fill="none" opacity="0.6"/>
+    <path d="M700,430 C800,410 850,400 884,394" stroke="#6aa0ff" stroke-width="1.6" fill="none" opacity="0.7"/><circle cx="884" cy="394" r="4" fill="#6aa0ff"/>
+    <path d="M500,575 C420,560 360,552 316,546" stroke="#2fd3c2" stroke-width="1.6" fill="none" opacity="0.7"/><circle cx="316" cy="546" r="4" fill="#2fd3c2"/>
+    <path d="M700,720 C800,700 850,692 884,686" stroke="#a981ff" stroke-width="1.6" fill="none" opacity="0.7"/><circle cx="884" cy="686" r="4" fill="#a981ff"/>
+  </svg>
+
+  <!-- icons on tiers -->
+  <div class="icon" style="left:574px;top:404px"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9"><circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="3.6" ry="8.5"/><path d="M3.5 12h17M5 8h14M5 16h14"/></svg></div>
+  <div class="icon" style="left:574px;top:549px"><svg viewBox="0 0 24 24" fill="#fff" stroke="none"><rect x="5" y="5" width="6" height="6" rx="1.5"/><rect x="13" y="5" width="6" height="6" rx="1.5"/><rect x="5" y="13" width="6" height="6" rx="1.5"/><rect x="13" y="13" width="6" height="6" rx="1.5"/></svg></div>
+  <div class="icon" style="left:574px;top:694px"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></div>
+
+  <!-- callouts -->
+  <div class="callout" style="left:900px;top:360px"><div class="h" style="color:#7da7ff">Web tier</div><div class="u" style="background:#2e62de;width:98px"></div><p>snet-web · 10.0.1.0/24</p><p class="mono">allow Internet &#8594; 443</p></div>
+  <div class="callout" style="left:16px;top:508px;text-align:right"><div class="h" style="color:#4fe0d0">Application tier</div><div class="u" style="background:#15a3bc;width:150px;margin-left:auto"></div><p>snet-app · 10.0.2.0/24</p><p class="mono">allow web tier &#8594; 443</p></div>
+  <div class="callout" style="left:900px;top:650px"><div class="h" style="color:#b59cff">Data tier</div><div class="u" style="background:#6b3bea;width:88px"></div><p>snet-data · 10.0.3.0/24</p><p class="mono">allow app tier &#8594; 1433 · deny all</p></div>
+
+  <!-- verdict pills -->
+  <div class="pill" style="left:300px;top:910px;background:rgba(34,196,134,.16);border:1px solid rgba(34,196,134,.5);color:#5fe3ab"><div class="dot" style="background:#22c486"></div>PROVEN · data tier denies all internet inbound</div>
+  <div class="pill" style="left:760px;top:910px;background:rgba(255,92,110,.14);border:1px solid rgba(255,92,110,.5);color:#ff9aa6"><div class="dot" style="background:#ff5c6e"></div>VIOLATED · returns the exact admitted packet</div>
+</body></html>
